@@ -30,8 +30,8 @@ Note: qc-billing is a completely separate script/system from RSG Core Framework.
 
 **DEPENDENCIES**
 -----
-rsg-core
-rsg-menu
-rsg-input
+- rsg-core
+- rsg-menu
+- rsg-input
 
 

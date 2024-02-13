@@ -26,7 +26,7 @@ Note: qc-billing is a completely separate script/system from RSG Core Framework.
 ![image](https://github.com/Artmines/qc-billing/assets/96462463/8d6489ce-a8bf-467b-97d0-4829479df522)
 ![image](https://github.com/Artmines/qc-billing/assets/96462463/f9728f94-cb4f-4c68-81bd-76a85bcd124a)
 ![image](https://github.com/Artmines/qc-billing/assets/96462463/53ad2296-4649-460a-94cd-fc1563fee6d9)
-![image](https://github.com/Artmines/qc-billing/assets/96462463/85660103-3087-4b51-b0f9-e4bd409a3045)
+
 
 **DEPENDENCIES**
 -----

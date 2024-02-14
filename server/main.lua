@@ -191,7 +191,7 @@ AddEventHandler('qc-billing:server:getBillsToPay', function()
         if bills and bills[1] then
             TriggerClientEvent('qc-billing:client:openBillsToPayMenu', src, bills)
         else
-            TriggerClientEvent('RSGCore:Notify', src, Lang:t('error.retrieving_bills'), 'error')
+         --   TriggerClientEvent('RSGCore:Notify', src, Lang:t('error.retrieving_bills'), 'error')   IDK WHY THIS TRIGGERS
         end
     end)
 end)
@@ -216,6 +216,7 @@ AddEventHandler('qc-billing:server:payBill', function(data)
     --print('qc-billing:server:payBill event triggered with bill ID:', bill.id)
     if player.Functions.GetMoney('bank') >= bill.amount then
         player.Functions.RemoveMoney('bank', bill.amount, Lang:t('other.bill_pay_desc'))
+        exports['rsg-bossmenu']:AddMoney(bill.sender_account, bill.amount)                         --- if rsg-management then just swap bossmenu for that
         local datetime = os.date('%Y-%m-%d %H:%M:%S')
         RSGCore.Functions.GetPlayerByCitizenId(bill.sender_citizenid, function(sender)
             if sender then
@@ -235,6 +236,7 @@ AddEventHandler('qc-billing:server:payBill', function(data)
         }, function(affectedRows)
             --print('Update query affected rows:', affectedRows)
         end)
+    else
         TriggerClientEvent('RSGCore:Notify', src, Lang:t('error.not_enough_money'), 'error')
     end
     TriggerClientEvent('qc-billing:client:getBillsToPay', src)

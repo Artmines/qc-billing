@@ -5,7 +5,7 @@ games {"rdr3"}
 
 author 'Pablo Enterprises'
 description 'qc-billing'
-version '2.1.0'
+version '2.0.0'
 
 shared_scripts {
     '@ox_lib/init.lua',
@@ -25,6 +25,8 @@ server_scripts {
 
 dependencies {
     'rsg-core',
+    'rsg-menu',
+    'rsg-input'
 }
 
 lua54 'yes'

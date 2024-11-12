@@ -145,17 +145,17 @@ AddEventHandler('qc-billing:server:sendBill', function(data)
                 }, function(result)
                     if result > 0 then
                         local message = 'Bill sent to ' .. recipientFullName .. ' for the amount of $' .. billAmount
-                        TriggerClientEvent('ox_lib:notify', source, {title = message, type = 'inform' })
+                        TriggerClientEvent('ox_lib:notify', src, {title = message, type = 'success', duration = 5000 })
                     else
-                        TriggerClientEvent('ox_lib:notify', source, {title = Lang:t('error.sending_bill'), type = 'error' })
+                        TriggerClientEvent('ox_lib:notify', src, {title = Lang:t('error.sending_bill'), type = 'error', duration = 5000 })
                     end
                 end)
             else
-                TriggerClientEvent('ox_lib:notify', source, {title = Lang:t('error.recipient_not_found'), type = 'error' })
+                TriggerClientEvent('ox_lib:notify', src, {title = Lang:t('error.recipient_not_found'), type = 'error', duration = 5000 })
             end
         end)
     else
-        TriggerClientEvent('ox_lib:notify', source, {title = Lang:t('error.not_permitted'), type = 'error' })
+        TriggerClientEvent('ox_lib:notify', src, {title = Lang:t('error.not_permitted'), type = 'error', duration = 5000 })
     end
     TriggerClientEvent('qc-billing:client:engageChooseBillViewMenu', src)
 end)
@@ -167,7 +167,7 @@ AddEventHandler('qc-billing:server:getPendingBilled', function()
         if bills and bills[1] then
             TriggerClientEvent('qc-billing:client:openPendingBilledMenu', src, bills)
         else
-            TriggerClientEvent('ox_lib:notify', source, {title = Lang:t('error.retrieving_bills'), type = 'error' })
+            TriggerClientEvent('ox_lib:notify', src, {title = Lang:t('error.retrieving_bills'), type = 'error', duration = 5000 })
         end
     end)
 end)
@@ -179,7 +179,7 @@ AddEventHandler('qc-billing:server:getPaidBilled', function()
         if bills and bills[1] then
             TriggerClientEvent('qc-billing:client:openPaidBilledMenu', src, bills)
         else
-            TriggerClientEvent('ox_lib:notify', source, {title = Lang:t('error.retrieving_bills'), type = 'error' })
+            TriggerClientEvent('ox_lib:notify', src, {title = Lang:t('error.retrieving_bills'), type = 'error', duration = 5000 })
         end
     end)
 end)
@@ -237,7 +237,7 @@ AddEventHandler('qc-billing:server:payBill', function(data)
             --print('Update query affected rows:', affectedRows)
         end)
     else
-        TriggerClientEvent('ox_lib:notify', source, {title = Lang:t('error.not_enough_money'), type = 'error' })
+        TriggerClientEvent('ox_lib:notify', src, {title = Lang:t('error.not_enough_money'), type = 'error', duration = 5000 })
     end
     TriggerClientEvent('qc-billing:client:getBillsToPay', src)
 end)
@@ -266,8 +266,8 @@ end)
 
 RegisterNetEvent('qc-billing:server:notifyBillStatusChange')
 AddEventHandler('qc-billing:server:notifyBillStatusChange', function(recipient, notificationMessage, notificationMessageType, textSubject, textMessage)
-    if Config.EnablePopupNotification then 
-        TriggerClientEvent('ox_lib:notify', source, {title = notificationMessage, type = notificationMessageType })
+    if Config.EnablePopupNotification then
+        TriggerClientEvent('ox_lib:notify', recipient, {title = notificationMessage, type = notificationMessageType, duration = 5000 })
     end
     if Config.EnableTextNotifications then
         TriggerClientEvent('qc-billing:client:sendText', recipient, textSubject, textMessage)

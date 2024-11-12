@@ -5,7 +5,7 @@ games {"rdr3"}
 
 author 'Pablo Enterprises'
 description 'qc-billing'
-version '2.0.0'
+version '1.9.8'
 
 shared_scripts {
     '@ox_lib/init.lua',

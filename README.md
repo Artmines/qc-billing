@@ -1,4 +1,4 @@
-# QC Billing V2 For RSG Core REDM
+# QC Billing V1.9 For RSG Core REDM
 
 qc-billing is a script for FiveM RSG Core providing a simple and intuitive menu (accessed via one command) for employees to send bills on behalf of boss accounts/society funds and for employees *and* regular citizens to manage, view, and pay bills.
 

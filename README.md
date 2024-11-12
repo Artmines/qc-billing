@@ -2,7 +2,7 @@
 
 qc-billing is a script for FiveM RSG Core providing a simple and intuitive menu (accessed via one command) for employees to send bills on behalf of boss accounts/society funds and for employees *and* regular citizens to manage, view, and pay bills.
 
-Note: qc-billing is a completely separate script/system from RSG Core Framework.
+Note: qc-billing is a completely separate script/system from RSG Core Framework you can choose to use RSG-Menu or Ox_Lib in the config.
 
 <h1>INSTALLATION GUIDE</h1>
 

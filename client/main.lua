@@ -88,22 +88,12 @@ local function engageSendBillMenu()
 end
 
 local function getClosestPlayer()
-    local closestPlayers = RSGCore.Functions.GetPlayersFromCoords()
-    local closestDistance = -1
-    local closestPlayerCitizenId = nil 
-    local coords = GetEntityCoords(PlayerPedId())
-    for i = 1, #closestPlayers, 1 do
-        local player = RSGCore.Functions.GetPlayer(closestPlayers[i])
-        if player and player.PlayerData.citizenid and closestPlayers[i] ~= PlayerId() then
-            local pos = GetEntityCoords(GetPlayerPed(closestPlayers[i]))
-            local distance = #(pos - coords)
-            if closestDistance == -1 or closestDistance > distance then
-                closestPlayerCitizenId = player.PlayerData.citizenid 
-                closestDistance = distance
-            end
-        end
-    end
-    return closestPlayerCitizenId, closestDistance
+    local plyCoords = GetEntityCoords(cache.ped)
+    local targetply, _, targetCoords= lib.getClosestPlayer(plyCoords, 5, false)
+    local dist = #(plyCoords - targetCoords)
+    local targetId = GetPlayerServerId(targetply)
+    local targetCid = lib.callback.await('billing:sv:getPlyCId', false, targetId)
+    return targetCid, dist
 end
 
 -- Commands --

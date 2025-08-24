@@ -118,6 +118,11 @@ RSGCore.Functions.CreateCallback('qc-billing:server:getPlayerFromCitizenId', fun
     end)
 end)
 
+lib.callback.register('billing:sv:getPlyCId', function(source, pid)
+    local targetPly = RSGCore.Functions.GetPlayer(tonumber(pid))
+    return targetPly.PlayerData.citizenid
+end)
+
 RegisterNetEvent('qc-billing:server:sendBill')
 AddEventHandler('qc-billing:server:sendBill', function(data)
     local src = source
